@@ -2594,3 +2594,26 @@ img {
         flex-direction: column;
     }
 }
+
+
+/* استايل اسم Mohamed Alramaly في الفوتر */
+
+.footer__copy .moalramly {
+    color: var(--first-color-alt);
+    /* لون الاسم */
+    font-weight: bold;
+    /* خط عريض */
+    text-decoration: none;
+    /* إزالة الخط السفلي الافتراضي */
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* تأثير سلس عند المرور */
+}
+
+.footer__copy .moalramly:hover {
+    color: var(--title-color);
+    /* لون مختلف عند المرور */
+    transform: scale(1.1);
+    /* يكبر شوية عند المرور */
+    cursor: pointer;
+    /* المؤشر يتحول ليد */
+}
