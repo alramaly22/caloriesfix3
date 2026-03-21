@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Calories Fix</title>
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="{% static 'assets/img/logo.png' %}" type="image/x-icon">
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/checkout.css' %}">
+</head>
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="{% url 'index' %}" class="nav__logo">
+                <img src="{% static 'assets/img/logo.png' %}" alt="" class="ss"><span>Calories Fix</span>
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li>
+                        <a href="{% url 'index' %}#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'index' %}#meals" class="nav__link">Menu</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'index' %}#reviews" class="nav__link">Reviews</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'index' %}#care" class="nav__link">Choose Us</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'index' %}#contact" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+                <!-- Theme Button -->
+                <i class="ri-moon-clear-fill nav__theme" id="theme-button"></i>
+            </div>
+          
+            <!-- Toggle Button -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-5-fill"></i>
+                
+
+            </div>
+        </nav>
+    </header>
+       <!--==================== MAIN ====================-->
+    <main class="main">
+<section class="checkout container section">
+    <div class="checkout-grid">
+
+        <!-- ===== LEFT: CUSTOMER FORM ===== -->
+        <form class="checkout-form" method="POST">
+            {% csrf_token %}
+            <h2 class="checkout-title">Customer Details</h2>
+
+            <input type="text" name="name" placeholder="Full Name *" required>
+            <input type="tel" name="phone" placeholder="Phone Number *" required>
+            <input type="email" name="email" placeholder="Email (Optional)">
+            <textarea name="address" placeholder="Address *" required></textarea>
+            <textarea name="notes" placeholder="Delivery Instructions"></textarea>
+
+            <div class="payment-method">
+                <h4 class="paymentmethod">Payment Method</h4>
+                <div class="payment-options">
+                    <label class="payment-option selected">
+                        <input type="radio" name="payment" value="cash" checked>
+                        <span class="cashtext">💵 Cash on Delivery</span>
+                    </label>
+
+                    <label class="payment-option disabled">
+                        <input type="radio" name="payment" value="card" disabled>
+                        <span class="cardtext">💳 Card (Coming Soon)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Hidden inputs -->
+            <input type="hidden" name="cart_data" id="cartData">
+            <input type="hidden" name="total" id="totalInput">
+
+            {% if error %}
+            <p class="error-message">{{ error }}</p>
+            {% endif %}
+
+            <button type="submit" class="button">Place Order</button>
+        </form>
+
+        <!-- ===== RIGHT: ORDER SUMMARY ===== -->
+        <div class="order-summary">
+            <h2 class="checkout-title">Order Summary</h2>
+            <div id="summaryItems"></div>
+
+            <div class="summary-total">
+                <h3>Total: <span id="total">0</span> AED</h3>
+            </div>
+        </div>
+
+    </div>
+</section>
+    </main>
+<script>
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
+const summaryItems = document.getElementById('summaryItems');
+const totalEl = document.getElementById('total');
+const cartDataInput = document.getElementById('cartData');
+const totalInput = document.getElementById('totalInput');
+
+const priceMap = {2:1296,3:1673,4:2169,5:2546};
+
+// نحسب إجمالي عدد الوجبات
+let totalMeals = 0;
+cart.forEach(item => totalMeals += item.quantity);
+
+// دالة تقسيم المجموعات (نفس اللي في main.js)
+function splitGroups(n){
+    const groups = [];
+    while(n > 0){
+        if(n >= 5){ groups.push(5); n -=5; }
+        else if(n === 4){ groups.push(4); n -=4; }
+        else if(n === 3){ groups.push(3); n -=3; }
+        else if(n === 2){ groups.push(2); n -=2; }
+        else if(n === 1){ groups.push(2); n -=1; }
+    }
+    return groups;
+}
+
+let grandTotal = 0;
+
+if(totalMeals >= 2){
+    const groups = splitGroups(totalMeals);
+    groups.forEach(g => {
+        grandTotal += priceMap[g] || priceMap[5];
+    });
+}
+
+// عرض العناصر (بدون حساب فردي)
+cart.forEach(item => {
+    summaryItems.innerHTML += `
+        <div class="order-item">
+            <img src="${item.img}" alt="${item.name}">
+            <div class="order-item-info">
+                <strong>${item.name}</strong>
+                <p>Qty: ${item.quantity}</p>
+                <p>Price: See total below</p>
+            </div>
+        </div>
+    `;
+});
+
+totalEl.textContent = grandTotal;
+cartDataInput.value = JSON.stringify(cart);
+totalInput.value = grandTotal;
+</script>
+
+<!--=============== MAIN JS ===============-->
+    <script >
+        /*=============== SHOW MENU ===============*/
+const showMenu = (navId, toggleId) => {
+    const nav = document.getElementById(navId),
+        toggle = document.getElementById(toggleId)
+    toggle.addEventListener('click', () => {
+        nav.classList.toggle('show-menu')
+    })
+}
+showMenu('nav-menu', 'nav-toggle')
+    /*=============== REMOVE MENU MOBILE ===============*/
+const navLink = document.querySelectorAll('.nav__link')
+
+const linkAction = () => {
+    const navMenu = document.getElementById('nav-menu')
+        // When we click on each nav__link, we remove the show-menu class
+    navMenu.classList.remove('show-menu')
+}
+navLink.forEach(n => n.addEventListener('click', linkAction))
+
+/*=============== ADD SHADOW HEADER ===============*/
+const shadowHeader = () => {
+    const header = document.getElementById('header')
+        // Add a class if the bottom offset is greater than 50 of the viewport
+    this.scrollY >= 50 ? header.classList.add('shadow-header') :
+        header.classList.remove('shadow-header')
+}
+window.addEventListener('scroll', shadowHeader)
+
+
+    /*=============== DARK LIGHT THEME ===============*/
+const themeButton = document.getElementById('theme-button')
+const darkTheme = 'dark-theme'
+const iconTheme = 'ri-sun-foggy-fill'
+
+// Previously selected topic (if user selected)
+const selectedTheme = localStorage.getItem('selected-theme')
+const selectedIcon = localStorage.getItem('selected-icon')
+
+// We obtain the current theme that the interface has by validating the dark-theme class
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-menu-5-fill' : 'ri-sun-foggy-fill'
+
+// We validate if the user previously chose a topic
+if (selectedTheme) {
+    // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+    themeButton.classList[selectedIcon === 'ri-menu-5-fill' ? 'add' : 'remove'](iconTheme)
+}
+
+// Activate / deactivate the theme manually with the button
+themeButton.addEventListener('click', () => {
+    // Add or remove the dark / icon theme
+    document.body.classList.toggle(darkTheme)
+    themeButton.classList.toggle(iconTheme)
+        // We save the theme and the current icon that the user chose
+    localStorage.setItem('selected-theme', getCurrentTheme())
+    localStorage.setItem('selected-icon', getCurrentIcon())
+})
+
+    </script>
+</body>
+</html>

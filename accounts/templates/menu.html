@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     {% load static %}
+    <!-- مهم جدًا للـ static files -->
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="{% static 'assets/img/logo.png' %}" type="image/x-icon">
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    {% comment %} <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> {% endcomment %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+    <title>Menu</title>
+</head>
+
+<body>
+
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="{% url 'index' %}" class="nav__logo">
+                <img src="{% static 'assets/img/logo.png' %}" alt="" class="ss"><span>Calories Fix</span>
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li>
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="#meals" class="nav__link">Menu</a>
+                    </li>
+                    <li>
+                        <a href="#reviews" class="nav__link">Reviews</a>
+                    </li>
+                    <li>
+                        <a href="#care" class="nav__link">Choose Us</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+                <!-- Theme Button -->
+                <i class="ri-moon-clear-fill nav__theme" id="theme-button"></i>
+            </div>
+            <a href="#" class="cart" id="cartBtn">
+                    🛒 Cart <span id="cartCount">0</span>
+                </a>
+            <!-- Toggle Button -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-5-fill"></i>
+                
+
+            </div>
+        </nav>
+    </header>
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<div class="side-cart" id="sideCart">
+    <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="button-xfix" id="closeCart">✖</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-footer">
+        <p>Total: <strong><span id="cartTotal">0</span> AED</strong></p>
+        <a href="{% url 'checkout' %}" class="checkout-btn">Checkout</a>
+    </div>
+</div>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+               <!--==================== MENU ====================-->
+        <section class="menu1 section" id="menu">
+            <h2 class="section__title">
+                OUR MENU
+            </h2>
+            <div class="menu__container1 container">
+                <h2 class="menu__text-1">寿 <br> 司</h2>
+                <h2 class="menu__text-2">拉 <br> 麺</h2>
+
+
+                <div class="menu__tabs1 swiper">
+                    <div class="menu__buttons1 swiper-wrapper">
+                        <button class="menu__button1 swiper-slide">
+                            <img src="assets/img/bowl of egg salad.png" alt="">
+                            <span>Salads</span>
+                        </button>
+
+                        <button class="menu__button1 swiper-slide">
+                            <img src="assets/img/bowl of egg salad.png" alt="">
+                            <span>Breakfast</span>
+                        </button>
+
+                        <button class="menu__button1 swiper-slide">
+                            <img src="assets/img/menu-9.png" alt="">
+                            <span>Main Meals</span>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="menu__content1 swiper">
+                    <div class="swiper-wrapper">
+                        <div class="menu__cards1 swiper-slide">
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/bowl-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">bowl of egg salad</h3>
+                                    <p class="menu__amount">150-170 g</p>
+                                    <h3 class="menu__price">325 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>15 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>10 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>24 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>2 boiled eggs, beetroot, cherry tomatoes, bell peppers, arugula, lettuce, cucumber, walnuts, sweet potatoes cubes, olive oil dressing</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/sharimps1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">SHRIMPS CAESAR SALAD</h3>
+                                    <p class="menu__amount">120 g shrimps</p>
+                                    <h3 class="menu__price">380 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>33 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>22 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>15 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Shrimps, lettuce, cucumber, cherry tomatoes, olives, toast, parmesan cheese, light caesar sauce</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/chickencaesar1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">CHICKEN CAESAR SALAD</h3>
+                                    <p class="menu__amount">140 g chicken</p>
+                                    <h3 class="menu__price">395 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>35 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>19 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>15 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Grilled chicken, lettuce, cucumber, cherry tomatoes, olives, radish, toast, parmesan cheese, light caesar sauce</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/crispychicken1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">CRISPY CHICKEN SALAD</h3>
+                                    <p class="menu__amount">140 g chicken</p>
+                                    <h3 class="menu__price">330 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>35 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>14 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>12 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Crispy chicken, lettuce, cucumber, cherry tomatoes, arugula, sweet corn, bell peppers, radish, french sauce</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+                            <!-- 5. Tuna Salad -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/fetacheese2-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">FETA CHEESE SALAD</h3>
+                                    <p class="menu__amount">100 g feta</p>
+                                    <h3 class="menu__price">390 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>17 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>18 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>27 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Feta cheese, lettuce, cherry tomatoes, cucumber, thyme, avocado cubes</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 6. Feta Cheese Salad -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/tunasalad1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">TUNA SALAD</h3>
+                                    <p class="menu__amount">160 g tuna</p>
+                                    <h3 class="menu__price">310 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>49 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>11 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>6 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Tuna, lettuce, tomatoes, bell peppers, cucumber, olives, dill, celery</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+                        </div>
+
+                        <div class="menu__cards1 swiper-slide">
+                            <!-- =============== menu1 =========== -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/699461fdceffdc000a8c1f16.png' %}" alt="" class="menu__img">
+
+                                <div>
+                                    <h3 class="menu__name">Chia Pudding with Fruits & Honey</h3>
+                                    <p class="menu__amount">150 g</p>
+                                    <h3 class="menu__price">300 kcal</h3>
+
+                                    <!-- Macros -->
+                                    <div class="menu__macros">
+                                        <div class="macro">
+                                            <span>Protein</span>
+                                            <strong>11 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Carbs</span>
+                                            <strong>33 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Fat</span>
+                                            <strong>13 g</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ingredients -->
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Chia seeds, yogurt, milk, mixed fruits, honey</p>
+                                    </div>
+                                </div>
+
+                                <button class="menu__button">
+                                    <i class="ri-shopping-bag-3-fill"></i>
+                                </button>
+                            </article>
+
+                            <!-- =============== menu2 =========== -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/psncakes1-Photoroom.png' %}" alt="" class="menu__img">
+
+                                <div>
+                                    <h3 class="menu__name">PANCAKES WITH MIXED FRUITS AND HONEY</h3>
+                                    <p class="menu__amount">150 g</p>
+                                    <h3 class="menu__price">354 kcal</h3>
+
+                                    <!-- Macros -->
+                                    <div class="menu__macros">
+                                        <div class="macro">
+                                            <span>Protein</span>
+                                            <strong>35 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Carbs</span>
+                                            <strong>26 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Fat</span>
+                                            <strong>13 g</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ingredients -->
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>2 pancakes, mixed fruits, honey (separate)</p>
+                                    </div>
+                                </div>
+
+                                <button class="menu__button">
+                                        <i class="ri-shopping-bag-3-fill"></i>
+                                    </button>
+                            </article>
+
+                            <!-- =============== menu3 =========== -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/eggroll2-Photoroom.png' %}" alt="" class="menu__img">
+
+                                <div>
+                                    <h3 class="menu__name">Egg Roll</h3>
+                                    <p class="menu__amount">120 g salad</p>
+                                    <h3 class="menu__price">420 kcal</h3>
+
+                                    <!-- Macros -->
+                                    <div class="menu__macros">
+                                        <div class="macro">
+                                            <span>Protein</span>
+                                            <strong>21 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Carbs</span>
+                                            <strong>16 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Fat</span>
+                                            <strong>26 g</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ingredients -->
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>3 eggs, bell peppers, onions, mix cheese, salad, olive oil dressing</p>
+                                    </div>
+                                </div>
+
+                                <button class="menu__button">
+                                    <i class="ri-shopping-bag-3-fill"></i>
+                                </button>
+                            </article>
+                            <!-- =============== menu4 =========== -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/eggpasterma1-Photoroom.png' %}" alt="" class="menu__img">
+
+                                <div>
+                                    <h3 class="menu__name">Egg ,Pasterma and Cream Cheese Croissant</h3>
+                                    <!-- <p class="menu__amount">150 g</p> -->
+                                    <h3 class="menu__price">405 kcal</h3>
+
+                                    <!-- Macros -->
+                                    <div class="menu__macros">
+                                        <div class="macro">
+                                            <span>Protein</span>
+                                            <strong>22 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Carbs</span>
+                                            <strong>26 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Fat</span>
+                                            <strong>18 g</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ingredients -->
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>eggs, brown croissant, kiri cheese, pasterma</p>
+                                    </div>
+                                </div>
+
+                                <button class="menu__button">
+                                        <i class="ri-shopping-bag-3-fill"></i>
+                                </button>
+                            </article>
+                            <!-- =============== menu5 =========== -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/egghalloumi1-Photoroom.png' %}" alt="" class="menu__img">
+
+                                <div>
+                                    <h3 class="menu__name">Egg Halloumi Sandwich</h3>
+                                    <!-- <p class="menu__amount">150 g</p> -->
+                                    <h3 class="menu__price">420 kcal</h3>
+
+                                    <!-- Macros -->
+                                    <div class="menu__macros">
+                                        <div class="macro">
+                                            <span>Protein</span>
+                                            <strong>28 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Carbs</span>
+                                            <strong>34 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Fat</span>
+                                            <strong>16 g</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ingredients -->
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p> eggs, brown toast, halloumi cheese, mayonnaise, salad</p>
+                                    </div>
+                                </div>
+
+                                <button class="menu__button">
+                                    <i class="ri-shopping-bag-3-fill"></i>
+                               </button>
+                            </article>
+                            <!-- =============== menu6 =========== -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/tuna1-Photoroom.png' %}" alt="" class="menu__img">
+
+                                <div>
+                                    <h3 class="menu__name">Tuna Sandwich</h3>
+                                    <p class="menu__amount">150 g tuna </p>
+                                    <h3 class="menu__price">425 kcal</h3>
+
+                                    <!-- Macros -->
+                                    <div class="menu__macros">
+                                        <div class="macro">
+                                            <span>Protein</span>
+                                            <strong>41 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Carbs</span>
+                                            <strong>35 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Fat</span>
+                                            <strong>8 g</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ingredients -->
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Brown toast, tuna, bell peppers, mustard, light mayo, side salad</p>
+                                    </div>
+                                </div>
+
+                                <button class="menu__button">
+                                    <i class="ri-shopping-bag-3-fill"></i>
+                                </button>
+                            </article>
+                            <!-- =============== menu7 =========== -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/fajitas1-Photoroom.png' %}" alt="" class="menu__img">
+
+                                <div>
+                                    <h3 class="menu__name">Fajitas Cheese Sandwich</h3>
+                                    <p class="menu__amount">150 g chicken fajitas</p>
+                                    <h3 class="menu__price">470 kcal</h3>
+
+                                    <!-- Macros -->
+                                    <div class="menu__macros">
+                                        <div class="macro">
+                                            <span>Protein</span>
+                                            <strong>40 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Carbs</span>
+                                            <strong>33 g</strong>
+                                        </div>
+                                        <div class="macro">
+                                            <span>Fat</span>
+                                            <strong>19 g</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ingredients -->
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p> chicken fajitas, lettuce, cucumber, mix cheese, French sauce</p>
+                                    </div>
+                                </div>
+
+                                <button class="menu__button">
+                            <i class="ri-shopping-bag-3-fill"></i>
+                                </button>
+                            </article>
+                        </div>
+
+                        <div class="menu__cards1 swiper-slide">
+                            <!-- 1. Grilled Kofta with Vegetables & Tahini -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/plate150g-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Grilled Kofta with Vegetables</h3>
+                                    <p class="menu__amount">150 g kofta</p>
+                                    <h3 class="menu__price">327 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>33 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>10 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>30 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Grilled kofta, carrots, mushrooms, zucchini, bell pepper, tahini dressing</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+
+                            <!-- 2. Grilled Kofta with Rice -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/grilledkoftameal1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Grilled Kofta Meal</h3>
+                                    <p class="menu__amount">150 g kofta + 130 g rice</p>
+                                    <h3 class="menu__price">442 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>37 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>42 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>14 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Grilled kofta, yellow rice, special dressing</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+
+                            <!-- 3. Beef Stroganoff -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/grilledchecken140g1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Grilled Chicken Meal</h3>
+                                    <p class="menu__amount">140 g chicken + 130 g rice</p>
+                                    <h3 class="menu__price">445 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>35 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>40 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>10 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Grilled chicken, Mexican rice, red sauce</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+
+                            <!-- 4. Beef Steak (Mash or Wedges) -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/chickenkabsa-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Chicken Kabsa Meal</h3>
+                                    <p class="menu__amount">140 g chicken + 130 g kabsa rice</p>
+                                    <h3 class="menu__price">449 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>39 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>42 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>14 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Grilled chicken, kabsa rice, carrots, demi-glace sauce</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+
+                            <!-- 5. Chicken Cordon Bleu -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/chickencordon1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Chicken Cordon Bleu</h3>
+                                    <p class="menu__amount">120 g chicken + 100 g rice</p>
+                                    <h3 class="menu__price">452 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>37 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>30 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>16 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p> 120 g Chicken breast, mix cheese, smoked turkey, salami, white sauce,100 g rice</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 6. Grilled Chicken with Mexican Rice -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/chickenburger1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Chicken Burger</h3>
+                                    <p class="menu__amount">130 g chicken + 60 g bun</p>
+                                    <h3 class="menu__price">445 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>36 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>32 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>16 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>130 g chicken, 60 g bun, lettuce, cucumber, 10 g mix cheese, 10 g French sauce</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+
+                            <!-- 7. Chicken Kabsa -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/chickencheesepizza1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Chicken Cheese Pizza (2 Pieces)</h3>
+                                    <p class="menu__amount">2 slices whole wheat pizza</p>
+                                    <h3 class="menu__price">451 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>33 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>42 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>17 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Chicken, whole wheat dough, olives, bell peppers, light mozzarella</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 8. Spaghetti Bolognese -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/mushroomalfredo2-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Mushroom Alfredo Pasta</h3>
+                                    <p class="menu__amount">140 g chicken + 100 g pasta</p>
+                                    <h3 class="menu__price">432 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>38 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>32 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>17 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>140 g chicken, 100 g pasta, mushrooms, light white sauce</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 9. Seafood Lasagna -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/spaghetti1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Spaghetti Bolognese</h3>
+                                    <p class="menu__amount">130 g minced beef + 130 g spaghetti</p>
+                                    <h3 class="menu__price">474 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>35 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>44 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>16 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>130 g minced beef, onions, garlic, red sauce, bell peppers, parsley, 130 g spaghetti</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 10. Chicken Lasagna -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/chickenlasagna1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Chicken Lasagna</h3>
+                                    <p class="menu__amount">120 g</p>
+                                    <h3 class="menu__price">437 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>37 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>32 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>18 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>Chicken, lasagna sheets, light mozzarella, cooking cream</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+                            <!-- 11. Beef Lasagna -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/seafood3-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Seafood Lasagna</h3>
+                                    <p class="menu__amount">120 g seafood + 100 g lasagna</p>
+                                    <h3 class="menu__price">426 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>34 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>32 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>18 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>120 g seafood mix, 100 g lasagna sheets, light mozzarella, cooking cream</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 12. Mushroom Alfredo Pasta -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/beeflasagna1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Beef Lasagna</h3>
+                                    <p class="menu__amount">120 g beef + 100 g lasagna</p>
+                                    <h3 class="menu__price">455 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>37 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>32 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>20 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>120 g beef, 100 g lasagna sheets, light mozzarella, cooking cream</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 13. Beef Balls with Rice -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/beefstroganoff2-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Beef Stroganoff Meal</h3>
+                                    <p class="menu__amount">140 g beef + 100 g mashed potatoes</p>
+                                    <h3 class="menu__price">480 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>35 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>30 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>21 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>140 g beef, onions, broccoli, bell peppers, demi-glace sauce, cooking cream, mashed potatoes</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 14. Beef Balls with Mash Potatoes -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/beefsteak140g1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Beef Steak Meal (Potato Wedges)</h3>
+                                    <p class="menu__amount">140 g beef steak + 100 g potato wedges</p>
+                                    <h3 class="menu__price">470 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>35 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>32 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>19 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>140 g beef steak, broccoli, mushrooms, demi-glace sauce, cooking cream, potato wedges</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 15. Grilled Fish with Rice -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/beefsteakmeal1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Beef Steak Meal (Mashed Potatoes)</h3>
+                                    <p class="menu__amount">140 g beef steak + 100 g mashed potatoes</p>
+                                    <h3 class="menu__price">470 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>35 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>32 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>19 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>140 g beef steak, broccoli, mushrooms, demi-glace sauce, cooking cream, mashed potatoes</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 16. Grilled Salmon with Rice -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/beefballswhithrice1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Beef Balls with Rice</h3>
+                                    <p class="menu__amount">150 g beef balls + 130 g rice</p>
+                                    <h3 class="menu__price">440 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>37 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>42 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>14 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>150 g grilled beef balls, 130 g rice, 40 g red sauce</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+
+                            <!-- 17. Grilled Salmon with Vegetables -->
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/grilledfish2-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Grilled Fish with Rice</h3>
+                                    <p class="menu__amount">150 g grilled fish + 130 g rice</p>
+                                    <h3 class="menu__price">449 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>36 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>37 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>15 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>150 g grilled fish, 130 g rice, lemon butter sauce (separate)</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+                            <!-- 17. Grilled Salmon with Rice -->
+
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/grilledsalmon1-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Grilled Salmon with Rice</h3>
+                                    <p class="menu__amount">110 g grilled salmon + 120 g rice</p>
+                                    <h3 class="menu__price">458 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>36 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>38 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>18 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>110 g grilled salmon, 120 g rice, lemon butter sauce (separate)</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+
+                            <!-- 17. Grilled Salmon with Vegetables -->
+
+                            <article class="menu__card">
+                                <img src="{% static 'assets/img/remover/plateof120g2-Photoroom.png' %}" class="menu__img">
+                                <div>
+                                    <h3 class="menu__name">Grilled Salmon with Vegetables</h3>
+                                    <p class="menu__amount">120 g salmon + 120 g grilled vegetables</p>
+                                    <h3 class="menu__price">342 kcal</h3>
+                                    <div class="menu__macros">
+                                        <div class="macro"><span>Protein</span><strong>34 g</strong></div>
+                                        <div class="macro"><span>Carbs</span><strong>10 g</strong></div>
+                                        <div class="macro"><span>Fat</span><strong>17 g</strong></div>
+                                    </div>
+                                    <div class="menu__details">
+                                        <h4>Ingredients</h4>
+                                        <p>120 g grilled salmon, 120 g grilled vegetables (carrots, mushrooms, zucchini, bell pepper), dill, cooking cream, lemon juice, salt, pepper</p>
+                                    </div>
+                                </div>
+                                <button class="menu__button"><i class="ri-shopping-bag-3-fill"></i></button>
+                            </article>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+<div class="meal-modal" id="mealModal">
+<div class="modal-content">
+    <span class="close">&times;</span>
+    <img src="" id="modalImg" alt="Meal Image">
+    <h3 id="modalTitle">Meal Title</h3>
+    <p id="modalDescription">Meal details...</p>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="modalQuantity" min="1" value="1">
+
+    <button id="modalOrderBtn">Order Now</button>
+</div>
+
+</div>
+       <!--==================== REVIEWS ====================-->
+        <section class="reviews section" id="reviews" data-aos="fade-right">
+            <div class="reviews__container container grid">
+                <div class="reviews__content">
+                    <h4 class="section__subtitle">OUR REVIEWS</h4>
+                    <h2 class="section__title">What Our Clients Say?</h2>
+                    <div class="reviews__swiper swiper">
+                        <div class="swiper-wrapper">
+                            <article class="reviews__card swiper-slide">
+                                <div class="reviews__profile">
+                                    <img src="{% static 'assets/img/reviews-img-1.png' %}" alt="" class="reviews__photo">
+                                    <div class="reviews__data">
+                                        <h3 class="reviews__name">
+                                            Ahmed Al Mansoori <span>(Fitness Coach)</span>
+                                        </h3>
+                                        <div class="reviews__rating">
+                                            <div class="reviews__stars">
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                            </div>
+                                            <h3 class="reviews__number">5.0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="reviews__comment">
+                                    Honestly one of the best healthy food experiences I’ve tried in the UAE. The meals are clean, tasty, and perfectly portioned. You can feel the difference in your energy.
+                                </p>
+                            </article>
+
+                            <article class="reviews__card swiper-slide">
+                                <div class="reviews__profile">
+                                    <img src="{% static 'assets/img/reviews-img-1.png' %}" alt="" class="reviews__photo">
+                                    <div class="reviews__data">
+                                        <h3 class="reviews__name">
+                                            Alaa Hassan
+                                        </h3>
+                                        <div class="reviews__rating">
+                                            <div class="reviews__stars">
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                            </div>
+                                            <h3 class="reviews__number">5.0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="reviews__comment">
+                                    Calories Fix helped me stay consistent with my diet. Great taste, accurate calories, and very professional service. Highly recommended.
+                                </p>
+                            </article>
+
+                            <article class="reviews__card swiper-slide">
+                                <div class="reviews__profile">
+                                    <img src="{% static 'assets/img/reviews-img-1.png' %}" alt="" class="reviews__photo">
+                                    <div class="reviews__data">
+                                        <h3 class="reviews__name">
+                                            Mohamed Saeed
+                                        </h3>
+                                        <div class="reviews__rating">
+                                            <div class="reviews__stars">
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                            </div>
+                                            <h3 class="reviews__number">5.0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="reviews__comment">
+                                    As a gym trainee, this is exactly what I needed. High-quality meals, perfect macros, and no stress about counting calories anymore.
+                                </p>
+                            </article>
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev">
+                            <i class="ri-arrow-left-s-line"></i>
+                        </div>
+                        <div class="swiper-button-next">
+                            <i class="ri-arrow-right-s-line"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews__image">
+                    <img src="{% static 'assets/img/client.png' %}" alt="" class="reviews__img">
+                </div>
+            </div>
+        </section>
+
+        <!--==================== APP ====================-->
+        <section class="app section" id="howitworks" data-aos="fade-left">
+            <div class="app__container container grid">
+
+                <!-- Steps -->
+                <div class="app__data">
+                    <h4 class="section__subtitle">HOW IT WORKS</h4>
+                    <h2 class="section__title">
+                        Order in Simple Steps
+                    </h2>
+
+                    <div class="steps">
+                        <article class="step active">
+                            <span class="step__number">01</span>
+                            <h3 class="step__title">Choose Your Favorite Meals</h3>
+                            <p class="step__description">
+                                Select the meal category you like, pick your favorite dishes, and add them to your cart.
+                            </p>
+                        </article>
+
+                        <article class="step">
+                            <span class="step__number">02</span>
+                            <h3 class="step__title">Enter Your Details</h3>
+                            <p class="step__description">
+                                Fill in your contact information and delivery address to complete your order.
+                            </p>
+                        </article>
+
+                        <article class="step">
+                            <span class="step__number">03</span>
+                            <h3 class="step__title">Confirm & Receive Your Order</h3>
+                            <p class="step__description">
+                                We will contact you to confirm your order, then your healthy meals will be delivered straight to your door.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Video -->
+                <div class="app__image">
+                    <video class="app__video" src="{% static 'assets/img/remover/reel 1.mp4' %}" muted loop playsinline>
+            </video>
+                </div>
+
+            </div>
+        </section>
+
+        <!--==================== MAP ====================-->
+        <section class="care section" id="care" data-aos="fade-right">
+            <h2 class="section__title">
+                Why Choose <br> Calories Fix?
+            </h2>
+            <div class="care__container container grid">
+                <img src="{% static 'assets/img/remover/chickenburgeredd1-Photoroom.png' %}" alt="" class="care__img">
+                <ul class="care__list">
+                    <li class="care__item">
+                        <i class="ri-check-double-fill"></i>
+                        <p>
+                            Precisely calculated calories and macros to help you reach your fitness goals without guessing or stress.
+                        </p>
+                    </li>
+                    <li class="care__item">
+                        <i class="ri-check-double-fill"></i>
+                        <p>
+                            Meals designed by fitness experts to support muscle building, fat loss, and overall performance.
+                        </p>
+                    </li>
+                    <li class="care__item">
+                        <i class="ri-check-double-fill"></i>
+                        <p>
+                            Fresh, high-quality ingredients prepared daily to ensure great taste and clean nutrition.
+                        </p>
+                    </li>
+                    <li class="care__item">
+                        <i class="ri-check-double-fill"></i>
+                        <p>
+                            Wide variety of meals so you never get bored while staying committed to your healthy lifestyle.
+                        </p>
+                    </li>
+                    <li class="care__item">
+                        <i class="ri-check-double-fill"></i>
+                        <p>
+                            Reliable service with order confirmation, on-time delivery, and full customer support across the UAE.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!--==================== Contact ====================-->
+        <section class="contact section" id="contact" data-aos="fade-left">
+            <h2 class="section__title">Contact Me</h2>
+            <div class="contact__container container grid">
+                <form action="" method="post" class="contact__form grid" id="contact-form">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Names" name="user_name" required class="contact__input">
+                    <input type="email" placeholder="Email" name="user_email" required class="contact__input">
+
+                    <textarea placeholder="" name="user_message" required class="contact__input contact__area"></textarea>
+                    <button type="submit" class="button">Send Message</button>
+                    <p class="contact__message" id="contact-message"></p>
+                </form>
+                <div class="contact__content grid">
+                    <div class="contact__data grid">
+                        <address class="contact__address">
+                    <i class="ri-mail-ai-fill"></i>
+                        <span>caloriesfix198@gmail.com</span>
+                </address>
+                        <address class="contact__address">
+                    <i class="ri-smartphone-fill"></i>
+                        <span>+0566661184</span>
+                </address>
+                        {% comment %} <address class="contact__address">
+                    <i class="ri-map-pin-2-fill"></i>
+                        <span>portsails, egypt</span>
+                </address> {% endcomment %}
+                        <address class="contact__address">
+                    <i class="ri-time-fill"></i>
+                        <span> Available</span>
+                </address>
+                    </div>
+                    <div class="contact__social">
+                        <a href="https://wa.me/20566666184" target="_blank" class="contact__link">
+                            <i class="ri-whatsapp-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/calories__fix/?igsh=MWo0d2Y1a3pnb3RnbA%3D%3D#" target="_blank" class="contact__link">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        {% comment %} <a href="#" target="_blank" class="contact__link">
+                            <i class="ri-telegram-2-fill"></i>
+                        </a> {% endcomment %}
+                    </div>
+                {% comment %} <img src="{% static 'assets/img/remover/Calories Fix - 01 (1)-Photoroom.png' %}" alt="" class="home__logo1"> {% endcomment %}
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__container container grid">
+            <a href="{% url 'index' %}" class="footer__logo">Calories Fix</a>
+            <div class="footer__content grid">
+                <a href="" class="footer__link">Terms & Agreements</a>
+                <a href="" class="footer__link">Privacy Policy</a>
+                <div class="footer__social">
+                    <a href="https://www.instagram.com/calories__fix/?igsh=MWo0d2Y1a3pnb3RnbA%3D%3D#" target="_blank">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a href="https://wa.me/2056666184" target="_blank">
+                        <i class="ri-whatsapp-fill"></i>
+                    </a>
+                    <a href="tel:0566661184" target="_blank">
+                        <i class="ri-phone-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <span class="footer__copy">
+        &#169; All Rights Reserved By Bedimcode
+    </span>
+    </footer>
+
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-double-line"></i>
+    </a>
+    <a href="https://wa.me/2056666184" class="scrollupwhatsapp">
+        <i class="ri-whatsapp-fill"></i>
+    </a>
+
+
+ <script src="{% static 'assets/js/main.js' %}"></script>
+ {% comment %} <script src="assets/js/swiper-bundle.min.js"></script>
+    <script>
+        const swiperTabs = new Swiper('.menu__tabs1', {
+            slidesPerView: 'auto',
+            watchSlidesProgress: true,
+
+        });
+
+        const swiperMenu = new Swiper('.menu__content1', {
+            loop: true,
+            spaceBetween: 30,
+            autoHeight: true,
+
+            thumbs: {
+                swiper: swiperTabs,
+            }
+        });
+    </script>  {% endcomment %}
+    
+</body>
+
+</html>

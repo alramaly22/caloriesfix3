@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     {% load static %}
+    <!-- مهم جدًا للـ static files -->
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="{% static 'assets/img/logo.png' %}" type="image/x-icon">
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    {% comment %} <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> {% endcomment %}
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+    <title>Calories Fix</title>
+</head>
+
+<body>
+        <div class="loader">
+        <div class="apple">
+            <img src="{% static 'assets/img/remover/CAL character@300x-8 (5)-Photoroom.png' %}" alt="Apple" />
+            <div class="arms">
+                <div class="arm left"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="sweat"></div>
+        </div>
+    </div>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="{% url 'index' %}" class="nav__logo">
+                <img src="{% static 'assets/img/logo.png' %}" alt="" class="ss"><span>Calories Fix</span>
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li>
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="#menu" class="nav__link">Menu</a>
+                    </li>
+                    <li>
+                        <a href="#reviews" class="nav__link">Reviews</a>
+                    </li>
+                    <li>
+                        <a href="#care" class="nav__link">Choose Us</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+                <!-- Theme Button -->
+                <i class="ri-moon-clear-fill nav__theme" id="theme-button"></i>
+            </div>
+            <a href="#" class="cart" id="cartBtn">
+                    🛒 Cart <span id="cartCount">0</span>
+                </a>
+            <!-- Toggle Button -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-5-fill"></i>
+                
+
+            </div>
+        </nav>
+    </header>
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<div class="side-cart" id="sideCart">
+    <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="button-xfix" id="closeCart">✖</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-footer">
+        <p>Total: <strong><span id="cartTotal">0</span> AED</strong></p>
+        <a href="{% url 'checkout' %}" class="checkout-btn">Checkout</a>
+    </div>
+</div>
+
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home" data-aos="fade-left">
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <div>
+                        <h1 class="home__title">
+                            Fix Your Calories, <span>Fuel Your Body</span>
+                        </h1>
+                        <p class="home__description">
+                            Healthy, balanced meals designed by fitness experts to help you build muscle, lose fat, and stay energized every day.
+                        </p>
+                        <a href="" class="button">Order Your Meals</a>
+                        <!-- link للـ Checkout page -->
+                    </div>
+                    <div class="home__social">
+                        <a href="" target="_blank" class="home__link">
+                            <i class="ri-facebook-circle-fill"></i>
+                        </a>
+                        <a href="" target="_blank" class="home__link">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="" target="_blank" class="home__link">
+                            <i class="ri-whatsapp-fill"></i>
+                        </a>
+                        <a href="" target="_blank" class="home__link">
+                            <i class="ri-mail-fill"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="home__image">
+                    <img src="{% static 'assets/img/hearo-removebg-preview.png' %}" alt="" class="home__img">
+                    <div class="home__phone">
+                        <div class="home__icon">
+                            <i class="ri-phone-fill"></i>
+                        </div>
+                        <address class="home__number">
+                     Phone Number:
+                     <span>+056666184</span>
+                    </address>
+                    </div>
+                    <p class="home__comment">
+                        Trusted by gym coaches and athletes across the UAE for clean, precise nutrition.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!--==================== SERVICE ====================-->
+        <section class="service section" id="menu" data-aos="fade-right">
+            <div class="section__title">Our Healthy Menus</div>
+            <div class="new__container container grid">
+                <div class="new__content grid">
+                    <article class="new__card">
+                        <div class="new__data">
+                            <h2 class="new__title">Breakfast</h2>
+                            <p class="new__description">
+                                Start your day with smart fuel. Our healthy breakfast options are perfectly balanced with protein, fiber, and essential nutrients to boost your energy, improve focus, and keep you full for hours — without unnecessary calories.
+                            </p>
+                        </div>
+                        <img src="{% static 'assets/img/remover/psncakes1-Photoroom.png' %}" alt="" class="new__img">
+                    </article>
+
+                    <article class="new__card">
+                        <div class="new__data">
+                            <h2 class="new__title">Healthy Salads</h2>
+                            <p class="new__description">
+                                Fresh, flavorful, and macro-balanced. Our salads are crafted with premium ingredients and high-quality protein sources to support fat loss, muscle recovery, and clean eating — all without sacrificing taste.
+
+                            </p>
+                        </div>
+                        <img src="{% static 'assets/img/remover/fetacheese2-Photoroom.png' %}" alt="" class="new__img">
+                    </article>
+
+                    <article class="new__card">
+                        <div class="new__data">
+                            <h2 class="new__title">Main Healthy Meals</h2>
+                            <p class="new__description">
+                                Power your performance with nutrient-dense main meals designed for active lifestyles. High in protein, perfectly portioned, and calorie-controlled to help you stay on track with your fitness goals.
+
+                            </p>
+                        </div>
+                        <img src="{% static 'assets/img/remover/plateof120g2-Photoroom.png' %}" alt="" class="new__img">
+                    </article>
+                </div>
+
+                <div class="menu-dropdown">
+                    <button class="new__button button" id="menuToggle">
+                        Browse Menus
+                    </button>
+
+                    <div class="submenu" id="submenu">
+                        <a href="{% url 'breakfast' %}" class="submenu__btn">Breakfast</a>
+                        <a href="{% url 'salads' %}" class="submenu__btn">Salads</a>
+                        <a href="{% url 'main' %}" class="submenu__btn">Main Meals</a>
+                    </div>
+                </div>
+                {% comment %} <a href="{% url 'main' %}" class="new__button button">Explore All Menus</a> {% endcomment %}
+                <!-- رابط ديناميكي لصفحة Main -->
+            </div>
+        </section>
+
+        <!--==================== MEALS ====================-->
+        <section class="meals section" id="meals" data-aos="fade-left">
+            <h2 class="section__title">What’s Included</h2>
+
+            <div class="meals__container container">
+                <div class="swiper meals__swiper">
+                    <div class="swiper-wrapper">
+
+                       
+                        <!-- Meal Card -->
+
+                        <!-- ================= BREAKFAST ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src=" {% static 'assets/img/remover/699461fdceffdc000a8c1f16.png' %}" alt="Chia Pudding with Fruits & Honey">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">breakfast</span>
+                                <h3 class="meal__title">Chia Pudding with Fruits & Honey</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>300 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>11 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>33 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>13 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Chia seeds, yogurt, milk, mixed fruits, honey</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now <i class="ri-restaurant-fill"></i></a>
+                        </article>
+
+                        <!-- ================= SALAD ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/bowl-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">salad</span>
+                                <h3 class="meal__title">Bowl of Egg Salad</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>325 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>15 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>10 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>24 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>2 boiled eggs, beetroot, cherry tomatoes, bell peppers, arugula, lettuce, cucumber, walnuts, sweet potatoes cubes, olive oil dressing</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+                        <!-- ** -->
+                        <!-- ================= main ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/plate150g-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">Main</span>
+                                <h3 class="meal__title">Grilled Kofta with Vegetables</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>327 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>33 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>10 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>30 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Grilled kofta, carrots, mushrooms, zucchini, bell pepper, tahini dressing</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+
+
+                        <!-- =========== 2 ========== -->
+                        <!-- ================= BREAKFAST ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/psncakes1-Photoroom.png' %}" alt="Chia Pudding with Fruits & Honey">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">breakfast</span>
+                                <h3 class="meal__title">PANCAKES WITH MIXED FRUITS AND HONEY</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>354 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>35 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>26 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>13 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>2 pancakes, mixed fruits, honey (separate)</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now </a>
+                        </article>
+
+                        <!-- ================= SALAD ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/sharimps1-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">salad</span>
+                                <h3 class="meal__title">SHRIMPS CAESAR SALAD</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>380 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>33 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>22 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>15 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Shrimps, lettuce, cucumber, cherry tomatoes, olives, toast, parmesan cheese, light caesar sauce</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+                        <!-- ** -->
+                        <!-- ================= main ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/grilledkoftameal1-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">Main Meal</span>
+                                <h3 class="meal__title">Grilled Kofta Meal</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>442 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>37 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>42 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>14 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Grilled kofta, yellow rice, special dressing</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+
+                        <!--  =============  3 ========== -->
+                         <!-- ================= BREAKFAST ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/eggroll2-Photoroom.png' %}" alt="Chia Pudding with Fruits & Honey">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">breakfast</span>
+                                <h3 class="meal__title">Egg Roll</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>420 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>21 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>16 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>26 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>3 eggs, bell peppers, onions, mix cheese, salad, olive oil dressing</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+
+                         <!-- ================= SALAD ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/chickencaesar1-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">salad</span>
+                                <h3 class="meal__title">CHICKEN CAESAR SALAD</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>395 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>35 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>19 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>15 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Grilled chicken, lettuce, cucumber, cherry tomatoes, olives, radish, toast, parmesan cheese, light caesar sauce</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+                        <!-- ** -->
+                         <!-- ================= main ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/grilledchecken140g1-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">Main Meal</span>
+                                <h3 class="meal__title">Grilled Chicken Meal</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>445 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>35 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>40 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>10 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Grilled chicken, Mexican rice, red sauce</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+
+                        <!-- ======= 4 ======= -->
+                         <!-- ================= BREAKFAST ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/eggpasterma1-Photoroom.png' %}" alt="Chia Pudding with Fruits & Honey">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">breakfast</span>
+                                <h3 class="meal__title">Egg ,Pasterma and Cream Cheese Croissant</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>405 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>22 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>26 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>18 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Egg ,Pasterma and Cream Cheese Croissant</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+
+                         <!-- ================= SALAD ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/crispychicken1-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">salad</span>
+                                <h3 class="meal__title">CRISPY CHICKEN SALAD</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>330 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>35 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>14 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>12 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Crispy chicken, lettuce, cucumber, cherry tomatoes, arugula, sweet corn, bell peppers, radish, french sauce</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+                        <!-- ** -->
+                         <!-- ================= main ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/chickenkabsa-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">Main Meal</span>
+                                <h3 class="meal__title">Chicken Kabsa Meal</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>449 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>39 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>42 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>14 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Grilled chicken, kabsa rice, carrots, demi-glace sauce</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+
+
+                        <!-- ========== 5 =========== -->
+                         <!-- ================= BREAKFAST ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/egghalloumi1-Photoroom.png' %}" alt="Chia Pudding with Fruits & Honey">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">breakfast</span>
+                                <h3 class="meal__title">Egg Halloumi Sandwich</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>420 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>28 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>34 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>16 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p> eggs, brown toast, halloumi cheese, mayonnaise, salad</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+
+                        <!-- ================= SALAD ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/fetacheese2-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">salad</span>
+                                <h3 class="meal__title">FETA CHEESE SALAD</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>390 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>17 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>18 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>27 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>2 boiled eggs, beetroot, cherry tomatoes, bell peppers, arugula, lettuce, cucumber, walnuts, sweet potatoes cubes, olive oil dressing</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+                        <!-- ** -->
+                        <!-- ================= main ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/chickencordon1-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">Main Meal</span>
+                                <h3 class="meal__title">Chicken Cordon Bleu</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>452 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>37 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>30 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>16 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>120 g Chicken breast, mix cheese, smoked turkey, salami, white sauce,100 g rice</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+
+                        <!-- =========== 6 ============ -->
+                        <!-- ================= BREAKFAST ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/tuna1-Photoroom.png' %}" alt="Chia Pudding with Fruits & Honey">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">breakfast</span>
+                                <h3 class="meal__title">Tuna Sandwich</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>425 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>41 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>35 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>8 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Brown toast, tuna, bell peppers, mustard, light mayo, side salad</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+
+                        <!-- ================= SALAD ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/tunasalad1-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">salad</span>
+                                <h3 class="meal__title">TUNA SALAD</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>310 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>49 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>11 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>6 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Tuna, lettuce, tomatoes, bell peppers, cucumber, olives, dill, celery</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+                        <!-- ** -->
+                        <!-- ================= main ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/chickenburger1-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">Main Meal</span>
+                                <h3 class="meal__title">Chicken Burger</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>445 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>36 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>32 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>16 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>130 g chicken, 60 g bun, lettuce, cucumber, 10 g mix cheese, 10 g French sauce</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+
+                        <!--  ========== 7 ======== -->
+                        <!-- ================= BREAKFAST ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/fajitas1-Photoroom.png' %}" alt="Chia Pudding with Fruits & Honey">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">breakfast</span>
+                                <h3 class="meal__title">Fajitas Cheese Sandwich</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>470 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>40 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>33 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>19 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>chicken fajitas, lettuce, cucumber, mix cheese, French sauce</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+                        <!-- ** -->
+                        <!-- ================= main ================= -->
+                        <article class="meal__card swiper-slide">
+                            <div class="meal__image">
+                                <img src="{% static 'assets/img/remover/chickencheesepizza1-Photoroom.png' %}" alt="Bowl of Egg Salad">
+                            </div>
+
+                            <div class="meal__content">
+                                <span class="meal__type">Main Meal</span>
+                                <h3 class="meal__title">Chicken Cheese Pizza (2 Pieces)</h3>
+
+                                <div class="meal__macros">
+                                    <div class="macro">
+                                        <span>Calories</span>
+                                        <strong>451 kcal</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Protein</span>
+                                        <strong>33 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Carbs</span>
+                                        <strong>42 g</strong>
+                                    </div>
+                                    <div class="macro">
+                                        <span>Fat</span>
+                                        <strong>17 g</strong>
+                                    </div>
+                                </div>
+
+                                <div class="meal__allergens">
+                                    <h4>Ingredients</h4>
+                                    <p>Chicken, whole wheat dough, olives, bell peppers, light mozzarella</p>
+                                </div>
+                            </div>
+
+                            <a href="#" class="button">Order Now</a>
+                        </article>
+                        <!-- انسخ الكارت ده وعدل البيانات -->
+
+                    {% comment %} </div>
+                    <div class="jj"> <a href="menu.html" class="new__button button">Explore All Menus</a>
+                    </div> {% endcomment %}
+                    </div>
+
+                    <div class="meals__controls">
+                        <div class="swiper-button-prev"></div>
+                        {% comment %} <div class="swiper-pagination"></div> {% endcomment %}
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<div class="meal-modal" id="mealModal">
+<div class="modal-content">
+    <span class="close">&times;</span>
+    <img src="" id="modalImg" alt="Meal Image">
+    <h3 id="modalTitle">Meal Title</h3>
+    <p id="modalDescription">Meal details...</p>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="modalQuantity" min="1" value="1">
+
+    <button id="modalOrderBtn">Order Now</button>
+</div>
+
+</div>
+
+        <!--==================== REVIEWS ====================-->
+        <section class="reviews section" id="reviews" data-aos="fade-right">
+            <div class="reviews__container container grid">
+                <div class="reviews__content">
+                    <h4 class="section__subtitle">OUR REVIEWS</h4>
+                    <h2 class="section__title">What Our Clients Say?</h2>
+                    <div class="reviews__swiper swiper">
+                        <div class="swiper-wrapper">
+                            <article class="reviews__card swiper-slide">
+                                <div class="reviews__profile">
+                                    <img src="{% static 'assets/img/reviews-img-1.png' %}" alt="" class="reviews__photo">
+                                    <div class="reviews__data">
+                                        <h3 class="reviews__name">
+                                            Ahmed Al Mansoori <span>(Fitness Coach)</span>
+                                        </h3>
+                                        <div class="reviews__rating">
+                                            <div class="reviews__stars">
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                            </div>
+                                            <h3 class="reviews__number">5.0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="reviews__comment">
+                                    Honestly one of the best healthy food experiences I’ve tried in the UAE. The meals are clean, tasty, and perfectly portioned. You can feel the difference in your energy.
+                                </p>
+                            </article>
+
+                            <article class="reviews__card swiper-slide">
+                                <div class="reviews__profile">
+                                    <img src="{% static 'assets/img/reviews-img-1.png' %}" alt="" class="reviews__photo">
+                                    <div class="reviews__data">
+                                        <h3 class="reviews__name">
+                                            Alaa Hassan
+                                        </h3>
+                                        <div class="reviews__rating">
+                                            <div class="reviews__stars">
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                            </div>
+                                            <h3 class="reviews__number">5.0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="reviews__comment">
+                                    Calories Fix helped me stay consistent with my diet. Great taste, accurate calories, and very professional service. Highly recommended.
+                                </p>
+                            </article>
+
+                            <article class="reviews__card swiper-slide">
+                                <div class="reviews__profile">
+                                    <img src="{% static 'assets/img/reviews-img-1.png' %}" alt="" class="reviews__photo">
+                                    <div class="reviews__data">
+                                        <h3 class="reviews__name">
+                                            Mohamed Saeed
+                                        </h3>
+                                        <div class="reviews__rating">
+                                            <div class="reviews__stars">
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                            </div>
+                                            <h3 class="reviews__number">5.0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="reviews__comment">
+                                    As a gym trainee, this is exactly what I needed. High-quality meals, perfect macros, and no stress about counting calories anymore.
+                                </p>
+                            </article>
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev">
+                            <i class="ri-arrow-left-s-line"></i>
+                        </div>
+                        <div class="swiper-button-next">
+                            <i class="ri-arrow-right-s-line"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews__image">
+                    <img src="{% static 'assets/img/client.png' %}" alt="" class="reviews__img">
+                </div>
+            </div>
+        </section>
+
+        <!--==================== APP ====================-->
+        <section class="app section" id="howitworks" data-aos="fade-left">
+            <div class="app__container container grid">
+
+                <!-- Steps -->
+                <div class="app__data">
+                    <h4 class="section__subtitle">HOW IT WORKS</h4>
+                    <h2 class="section__title">
+                        Order in Simple Steps
+                    </h2>
+
+                    <div class="steps">
+                        <article class="step active">
+                            <span class="step__number">01</span>
+                            <h3 class="step__title">Choose Your Favorite Meals</h3>
+                            <p class="step__description">
+                                Select the meal category you like, pick your favorite dishes, and add them to your cart.
+                            </p>
+                        </article>
+
+                        <article class="step">
+                            <span class="step__number">02</span>
+                            <h3 class="step__title">Enter Your Details</h3>
+                            <p class="step__description">
+                                Fill in your contact information and delivery address to complete your order.
+                            </p>
+                        </article>
+
+                        <article class="step">
+                            <span class="step__number">03</span>
+                            <h3 class="step__title">Confirm & Receive Your Order</h3>
+                            <p class="step__description">
+                                We will contact you to confirm your order, then your healthy meals will be delivered straight to your door.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Video -->
+                <div class="app__image">
+                    <video class="app__video" src="{% static 'assets/img/remover/reel 1.mp4' %}" muted loop playsinline>
+            </video>
+                </div>
+
+            </div>
+        </section>
+
+        <!--==================== MAP ====================-->
+        <section class="care section" id="care" data-aos="fade-right">
+            <h2 class="section__title">
+                Why Choose <br> Calories Fix?
+            </h2>
+            <div class="care__container container grid">
+                <img src="{% static 'assets/img/remover/DSC09816 copy-Photoroom.png' %}" alt="" class="care__img">
+                <ul class="care__list">
+                    <li class="care__item">
+                        <i class="ri-check-double-fill"></i>
+                        <p>
+                            Precisely calculated calories and macros to help you reach your fitness goals without guessing or stress.
+                        </p>
+                    </li>
+                    <li class="care__item">
+                        <i class="ri-check-double-fill"></i>
+                        <p>
+                            Meals designed by fitness experts to support muscle building, fat loss, and overall performance.
+                        </p>
+                    </li>
+                    <li class="care__item">
+                        <i class="ri-check-double-fill"></i>
+                        <p>
+                            Fresh, high-quality ingredients prepared daily to ensure great taste and clean nutrition.
+                        </p>
+                    </li>
+                    <li class="care__item">
+                        <i class="ri-check-double-fill"></i>
+                        <p>
+                            Wide variety of meals so you never get bored while staying committed to your healthy lifestyle.
+                        </p>
+                    </li>
+                    <li class="care__item">
+                        <i class="ri-check-double-fill"></i>
+                        <p>
+                            Reliable service with order confirmation, on-time delivery, and full customer support across the UAE.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!--==================== Contact ====================-->
+        <section class="contact section" id="contact" data-aos="fade-left">
+            <h2 class="section__title">Contact Me</h2>
+            <div class="contact__container container grid">
+                <form action="" method="post" class="contact__form grid" id="contact-form">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Names" name="user_name" required class="contact__input">
+                    <input type="email" placeholder="Email" name="user_email" required class="contact__input">
+
+                    <textarea placeholder="" name="user_message" required class="contact__input contact__area"></textarea>
+                    <button type="submit" class="button">Send Message</button>
+                    <p class="contact__message" id="contact-message"></p>
+                </form>
+                <div class="contact__content grid">
+                    <div class="contact__data grid">
+                        <address class="contact__address">
+                    <i class="ri-mail-ai-fill"></i>
+                        <span>caloriesfix198@gmail.com</span>
+                </address>
+                        <address class="contact__address">
+                    <i class="ri-smartphone-fill"></i>
+                        <span>+0566661184</span>
+                </address>
+                        {% comment %} <address class="contact__address">
+                    <i class="ri-map-pin-2-fill"></i>
+                        <span>portsails, egypt</span>
+                </address> {% endcomment %}
+                        <address class="contact__address">
+                    <i class="ri-time-fill"></i>
+                        <span> Available</span>
+                </address>
+                    </div>
+                    <div class="contact__social">
+                        <a href="https://wa.me/20566666184" target="_blank" class="contact__link">
+                            <i class="ri-whatsapp-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/calories__fix/?igsh=MWo0d2Y1a3pnb3RnbA%3D%3D#" target="_blank" class="contact__link">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        {% comment %} <a href="#" target="_blank" class="contact__link">
+                            <i class="ri-telegram-2-fill"></i>
+                        </a> {% endcomment %}
+                    </div>
+                {% comment %} <img src="{% static 'assets/img/remover/Calories Fix - 01 (1)-Photoroom.png' %}" alt="" class="home__logo1"> {% endcomment %}
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__container container grid">
+            <a href="{% url 'index' %}" class="footer__logo">Calories Fix</a>
+            <div class="footer__content grid">
+                <a href="" class="footer__link">Terms & Agreements</a>
+                <a href="" class="footer__link">Privacy Policy</a>
+                <div class="footer__social">
+                    <a href="https://www.instagram.com/calories__fix/?igsh=MWo0d2Y1a3pnb3RnbA%3D%3D#" target="_blank">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a href="https://wa.me/2056666184" target="_blank">
+                        <i class="ri-whatsapp-fill"></i>
+                    </a>
+                    <a href="tel:0566661184" target="_blank">
+                        <i class="ri-phone-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <span class="footer__copy">
+        &#169; All Rights Reserved By Bedimcode
+    </span>
+    </footer>
+
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-double-line"></i>
+    </a>
+    <a href="https://wa.me/2056666184" class="scrollupwhatsapp">
+        <i class="ri-whatsapp-fill"></i>
+    </a>
+       <script>
+        const toggleBtn = document.getElementById("menuToggle");
+        const submenu = document.getElementById("submenu");
+
+        toggleBtn.addEventListener("click", () => {
+            submenu.classList.toggle("active");
+        });
+    </script>
+   <script>
+        /* Steps animation */
+        const steps = document.querySelectorAll('.step');
+        let currentStep = 0;
+
+        setInterval(() => {
+            steps.forEach(step => step.classList.remove('active'));
+            steps[currentStep].classList.add('active');
+            currentStep = (currentStep + 1) % steps.length;
+        }, 3000);
+
+        /* Video play only when visible */
+        const video = document.querySelector('.app__video');
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            }, {
+                threshold: 0.5
+            }
+        );
+
+        observer.observe(video);
+    </script>
+
+    <script>
+        // JS
+        const loader = document.querySelector('.loader');
+        const leftArm = document.querySelector('.arm.left');
+        const rightArm = document.querySelector('.arm.right');
+        const sweat = document.querySelector('.sweat');
+
+        setTimeout(() => {
+            // Stop running
+            document.querySelector('.apple').style.animation = 'none';
+
+            // Arms lifting
+            leftArm.style.animation = 'lift 1s ease forwards';
+            rightArm.style.animation = 'lift 1s ease forwards';
+
+            // Sweat animation
+            sweat.style.animation = 'sweatDrop 1s ease 0.5s forwards';
+
+            // بعد الانتهاء، نختفي loader ونظهر المحتوى
+            setTimeout(() => {
+                loader.style.display = 'none';
+                document.querySelector('.content').style.display = 'block';
+                document.body.style.overflow = 'auto';
+            }, 2000);
+        }, 2000); // وقت الجري قبل التوقف
+    </script>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    {% comment %} <script>
+        const contactForm = document.getElementById('contact-form')
+        const contactMessage = document.getElementById('contact-message')
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault()
+
+            emailjs.sendForm(
+                    'service_1wk31fu',
+                    'template_9cr4bmt',
+                    this,
+                    'uJ1SY0rx73IzmtB2n'
+                )
+                .then(() => {
+                    contactMessage.textContent = "Message Sent Successfully ✅"
+                    contactForm.reset()
+                })
+                .catch((error) => {
+                    contactMessage.textContent = "Message Failed ❌"
+                    console.log(error)
+                })
+        })
+    </script> {% endcomment %}
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- scrolll animation -->
+    <script>
+        AOS.init({
+            offset: 200,
+            duration: 1500
+        });
+    </script>
+    <!--=============== SWIPER JS ===============-->
+    <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+    <!--=============== MAIN JS ===============-->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
